@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Game</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/e391ce7786.js" crossorigin="anonymous"></script>
+<script src="script.js" defer></script>
+</head>
+<body>
+<ul id="moves">
+  <li data-move="rock">
+    <span class="fa fa-fw fa-hand-rock-o"></span>
+    <span class="text">Rock</span>
+  </li>
+  <li data-move="paper">
+    <span class="fa fa-fw fa-hand-paper-o"></span>
+    <span class="text">Paper</span>
+  </li>
+  <li data-move="scissors">
+    <span class="fa fa-fw fa-hand-scissors-o"></span>
+    <span class="text">Scissors</span>
+  </li>
+</ul>
+<div class="scoreboard">
+  <table>
+    <thead>
+      <td>Player</td>
+      <td>Computer</td>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="Player-count">0</td>
+        <td class="Computer-count">0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
