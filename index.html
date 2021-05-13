@@ -1,50 +1,50 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Rock Paper Scissors</title>
-<link rel="stylesheet" href="style.css">
-<script src="script.js"></script>
-</head>
-<body>
-<div class ="container">
-  <h1>Rock Paper Scissors</h1>
-  <div class="row" id="pick">
-    <div class="col-md-4 rock" onclick="playGame('rock');">
-      <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
-      <h3>Rock</h3>
-    </div>
-    <div class="col-md-4 paper" onclick="playGame('paper');">
-      <i class="fa fa-hand-paper-o" aria-hidden="true"></i>
-      <h3>Paper</h3>
-    </div>
-    <div class="col-md-4 scissors" onclick="playGame('scissors');">
-      <i class="fa fa-hand-scissors-o" aria-hidden="true"></i>
-      <h3>Scissors</h3>
-    </div>
-  </div>
-  <div id="game">
-    
-    <div class ="row">
-      
-      <div id="player" class="col-md-6">
-        <i class="fa fa-hand-lizard-o reverse" aria-hidden="true"></i>
-        
+<html lang="en">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock. Paper. scissors.</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="start-container rock">
+        <div class="content-container">
+          <p class="robotTxt"></p>
+          <p class="robotScore"></p>
+          <button class="rock-btn-js">ROCK</button>
+        </div>
       </div>
-      <div id="computer" class="col-md-6">
-        <i class="fa fa-hand-lizard-o" aria-hidden="true"></i>
-        <h3>Computer</h3>
+
+      <div class="middle-container paper">
+        <div class="content-container">
+          <h1>
+            play
+            <span class="-rps-padding">
+              <span class="rps-r-pink">.R</span>
+              <span class="rps-p-blue">P.</span>
+              <span class="rps-s-yellow">S.</span>
+            </span>
+            with a robot
+          </h1>
+          <button class="paper-btn-js">PAPER</button>
+        </div>
       </div>
-      
-    
-        <div id="win"></div>
-    
-        <button class="fight btn" onclick="fight();">Fight!</button>
-        <button class="playAgain btn" onclick="playAgain();">Play Again?</button>
+
+      <div class="end-container scissor">
+        <div class="content-container">
+          <p class="playerTxt"></p>
+          <p class="playerScore"></p>
+          <button class="scissor-btn-js">SCISSORS</button>
+        </div>
+      </div>
     </div>
-    
-  </div>
-</div>
-</body>
+  </body>
 </html>
