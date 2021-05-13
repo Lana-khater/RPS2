@@ -5,37 +5,46 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Rock Paper Scissors</title>
 <link rel="stylesheet" href="style.css">
-<script src="https://kit.fontawesome.com/e391ce7786.js" crossorigin="anonymous"></script>
-<script src="script.js" defer></script>
+<script src="script.js"></script>
 </head>
 <body>
-<ul id="moves">
-  <li data-move="rock">
-    <span class="fa fa-fw fa-hand-rock-o"></span>
-    <span class="text">Rock</span>
-  </li>
-  <li data-move="paper">
-    <span class="fa fa-fw fa-hand-paper-o"></span>
-    <span class="text">Paper</span>
-  </li>
-  <li data-move="scissors">
-    <span class="fa fa-fw fa-hand-scissors-o"></span>
-    <span class="text">Scissors</span>
-  </li>
-</ul>
-<div class="scoreboard">
-  <table>
-    <thead>
-      <td>Player</td>
-      <td>Computer</td>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="Player-count">0</td>
-        <td class="Computer-count">0</td>
-      </tr>
-    </tbody>
-  </table>
+<div class ="container">
+  <h1>Rock Paper Scissors</h1>
+  <div class="row" id="pick">
+    <div class="col-md-4 rock" onclick="playGame('rock');">
+      <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+      <h3>Rock</h3>
+    </div>
+    <div class="col-md-4 paper" onclick="playGame('paper');">
+      <i class="fa fa-hand-paper-o" aria-hidden="true"></i>
+      <h3>Paper</h3>
+    </div>
+    <div class="col-md-4 scissors" onclick="playGame('scissors');">
+      <i class="fa fa-hand-scissors-o" aria-hidden="true"></i>
+      <h3>Scissors</h3>
+    </div>
+  </div>
+  <div id="game">
+    
+    <div class ="row">
+      
+      <div id="player" class="col-md-6">
+        <i class="fa fa-hand-lizard-o reverse" aria-hidden="true"></i>
+        
+      </div>
+      <div id="computer" class="col-md-6">
+        <i class="fa fa-hand-lizard-o" aria-hidden="true"></i>
+        <h3>Computer</h3>
+      </div>
+      
+    
+        <div id="win"></div>
+    
+        <button class="fight btn" onclick="fight();">Fight!</button>
+        <button class="playAgain btn" onclick="playAgain();">Play Again?</button>
+    </div>
+    
+  </div>
 </div>
 </body>
 </html>
