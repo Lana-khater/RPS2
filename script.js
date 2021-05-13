@@ -1,62 +1,50 @@
-const rockBtn = document.querySelector(".rock-btn-js"),
-  paperBtn = document.querySelector(".paper-btn-js"),
-  scissorBtn = document.querySelector(".scissor-btn-js"),
-  h1 = document.querySelector("h1");
-
-// btn click events ..........
-rockBtn.addEventListener("click", function () {
-  playGame(getRandomRockPaperScissors(), "rock");
-});
-paperBtn.addEventListener("click", function () {
-  playGame(getRandomRockPaperScissors(), "paper");
-});
-scissorBtn.addEventListener("click", function () {
-  playGame(getRandomRockPaperScissors(), "scissors");
-});
-
-function getRandomRockPaperScissors() {
-  let arr = ["rock", "paper", "scissors"];
-  return arr[Math.floor(Math.random() * 3)];
-}
-
-const winCombos = { rock: "paper", paper: "scissors", scissors: "rock" };
-
-function playGame(robotAnswer, playerAnswer) {
-  robotAnswerValue = robotAnswer;
-  playerAnswerValue = playerAnswer;
-  if (robotAnswer === playerAnswer) {
-    h1.textContent = "it was a tie";
-  } else if (winCombos[robotAnswer] === playerAnswer) {
-    displayPlayerWon();
-  } else {
-    displayRobotWon();
+const spans = document.querySelectorAll('#player span');
+const pc = document.querySelector('#pc');
+const msg = document.querySelector('p');
+var target;
+const clicked = function (event) {
+  if (!document.body.classList.contains('noclick')) {
+    document.body.classList.add('noclick');
+    target = event.target;
+    for (var span of spans) {
+      if (target !== span) {
+        span.classList.add('hidden');
+      }
+    }
+    var random = parseInt(Math.random() * 3);
+    pc.textContent = spans[random].textContent;
+    pc.dataset.id = spans[random].id;
+    pc.classList.remove('hidden');
+    setTimeout(results, 250);
   }
-  displayAnswerTxt(robotAnswerValue,playerAnswerValue);
+};
+const results = function () {
+  if (target.id == pc.dataset.id) {
+    msg.textContent = 'Draw';
+  }
+  if (target.id == 'rock'    && pc.dataset.id == 'paper'  || 
+      target.id == 'paper'   && pc.dataset.id == 'scissor'|| 
+      target.id == 'scissor' && pc.dataset.id == 'rock') {
+    msg.textContent = 'You lost';
+  }
+  if (target.id == 'rock'    && pc.dataset.id == 'scissor' || 
+      target.id == 'paper'   && pc.dataset.id == 'rock'    || 
+      target.id == 'scissor' && pc.dataset.id == 'paper') {
+    msg.textContent = 'You Win';
+  }
+  msg.classList.remove('hidden');
+  setTimeout(reset, 1500);
 }
-
-// display who won, their answer & score
-let robotScore = 0;
-let playerScore = 0;
-const playerWinnerDisplay = document.querySelector(".playerScore"),
-  playerAnswerDisplay = document.querySelector(".playerTxt"),
-  robotWinnerDisplay = document.querySelector(".robotScore"),
-  robotAnswerDisplay = document.querySelector(".robotTxt");
-
-function displayAnswerTxt() {
-  robotAnswerDisplay.textContent = `ROBOT: ${robotAnswerValue} `;
-  playerAnswerDisplay.textContent = `YOU: ${playerAnswerValue} `;
+const reset = function () {
+  for (var span of spans) {
+    span.classList.remove('hidden');
+  }
+  msg.classList.add('hidden');
+  pc.classList.add('hidden');
+  setTimeout(function () {
+    document.body.classList.remove('noclick');
+  }, 500);
 }
-
-function displayPlayerWon() {
-  playerScore++;
-  h1.textContent = "you won!";
-  h1.classList.add("playerTextColor");
-  playerWinnerDisplay.textContent = `[ ${playerScore} ]`;
-}
-
-function displayRobotWon() {
-  robotScore++;
-  h1.textContent = "the robot won!";
-  h1.classList.add("robotTextColor");
-  robotWinnerDisplay.textContent = `[ ${robotScore} ]`;
+for (var span of spans) {
+  span.addEventListener('click', clicked);
 }
