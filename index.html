@@ -3,46 +3,18 @@
   <head>
     <link
       href="style.css" rel="stylesheet"/>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&display=swap"
-      rel="stylesheet"
-    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock. Paper. scissors.</title>
+    <script>src= "script.js"</script>
   </head>
   <body>
-    <div class="container">
-      <div class="start-container rock">
-        <div class="content-container">
-          <p class="robotTxt"></p>
-          <p class="robotScore"></p>
-          <button class="rock-btn-js">ROCK</button>
-        </div>
-      </div>
-
-      <div class="middle-container paper">
-        <div class="content-container">
-          <h1>
-            play
-            <span class="-rps-padding">
-              <span class="rps-r-pink">.R</span>
-              <span class="rps-p-blue">P.</span>
-              <span class="rps-s-yellow">S.</span>
-            </span>
-            with a robot
-          </h1>
-          <button class="paper-btn-js">PAPER</button>
-        </div>
-      </div>
-
-      <div class="end-container scissor">
-        <div class="content-container">
-          <p class="playerTxt"></p>
-          <p class="playerScore"></p>
-          <button class="scissor-btn-js">SCISSORS</button>
-        </div>
-      </div>
-    </div>
+  <span id="pc" class="hidden">✊</span>
+<div id="player">
+  <span id="rock">✊</span>
+  <span id="paper">🤚</span>
+  <span id="scissor">✌️</span>
+</div>
+<p class="hidden">You Win!</p>
   </body>
 </html>
