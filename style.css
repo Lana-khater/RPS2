@@ -1,112 +1,61 @@
-// Observify Colours
-$light-blue: #edf0f9;
-$dark-blue: #151e28;
-$blue: #019cdf;
-$green: #35b197;
-$red: #e94d5a;
-$orange: #f66e3a;
-$pink: #f583b6;
-$purple: #7e4894;
-$black: #000000;
-$white: #ffffff;
-
-// Variables
-$body-bg: $dark-blue;
-$color: $light-blue;
-$font: 'Open Sans', sans-serif;
-$font-size: 16px;
-
-@keyframes icon-animation {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); }
-  60% { opacity: 0;} 
-  80% { transform: scale(0.5); }
-  90% { opacity: 0; }
-}
-
 body {
-  background-color: $body-bg;
-  color: $color;
-  font-family: $font;
-  font-size: $font-size;
+  background-color: #90A4AE;
 }
 
-// Put your prototype code here
-#moves {
-  list-style: none;
-  width: 100%;
-  padding: 0;
-  display: flex;
-  
-  li {
-    background: $green;
-    width: 33.33%;
-    margin: 1em;
-    
-    &:hover {
-      background: lighten($green, 10);
-    }
-
-    &:active {
-      background: $orange;
-    }
-    
-    .fa {
-      display: block;
-      font-size: 48px;
-      text-align: center;
-      width: 100%;
-      padding: 1em;
-      box-sizing: border-box;
-      
-      &.animating {
-        animation: icon-animation 2s 1;
-      }
-    }
-
-    .text {
-      text-align: center;
-      width: 100%;
-      display: block;
-      padding-bottom: 2em;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-weight: 600;
-      font-size: 11px;
-    }
-  }
+.container {
+    min-height: 600px;
+    max-height: 660px;
+    background-color: #fff;
+    margin-top: 30px;
+    border-radius: 15px;
+    max-width: 700px;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Fjalla One', sans-serif;
+}
+.row {
+    max-width: 600px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 30px;
+}
+.col-md-4 {
+    height: 200px; 
+    border: 2px solid #f2f2f2; 
+    color: #fff; padding: 20px; 
+    cursor: pointer;
 }
 
-.scoreboard {
-  width: 100%;
-  
-  table {
-    width: 100%;
-    background: lighten($body-bg, 3);
-    
-    td {
-      padding: .5em;
-      box-sizing: border-box;
-      text-align: center;
-      text-transform: uppercase;
-    }
 
-    thead {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      
-      td {
-        padding-top: 2em;
-      }
-    }
 
-    tbody {
-      td {
-        font-size: 96px;
-        font-weight: 900;
-        line-height: 1em;
-      }
-    }
-  }
+.col-md-4 i{font-size: 120px;}
+.rock {background-color: #6A1B9A;}
+.paper {background-color: #D84315;}
+.scissors {background-color: #FF9800;}
+
+.rock:hover {background-color:#4c136f;}
+.paper:hover {background-color:#d82315;}
+.scissors:hover {background-color: #ff7914;}
+.reverse {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+     -ms-filter: "FlipH";
+}
+
+#game {font-size: 160px; display:none;}
+#win {font-size: 40px; font-family: 'VT323', sans-serif; color: #4CAF50; margin-bottom:0px; height: 30px;}
+.fight {background-color:#d82315; padding: 10px; font-size: 40px; border-radius: 15px; color: #fff; margin-top:28px;}
+.fight:hover {color: #fff; background-color: #333;}
+
+.playAgain {background-color:#6A1B9A; padding: 10px; font-size: 40px; border-radius: 15px; color: #fff; display:none; margin-top:0px;}
+.playAgain:hover {color: #fff; background-color: #333;}
+
+
+.player {background-color:#d82315;width: 150px; color:#fff; margin-left: auto; margin-right: auto; padding: 8px; border-radius: 5px;}
+
+@media only screen and (max-width : 992px) {
+  .container {max-height: 1200px;}
 }
