@@ -1,91 +1,62 @@
-let player,
-    computer,
-    playerIcon,
-    computerIcon,
-    winCombinations = [
-  ['paper', 'rock'],
-  ['rock', 'scissors'],
-  ['scissors', 'paper']  
-];
+const rockBtn = document.querySelector(".rock-btn-js"),
+  paperBtn = document.querySelector(".paper-btn-js"),
+  scissorBtn = document.querySelector(".scissor-btn-js"),
+  h1 = document.querySelector("h1");
 
+// btn click events ..........
+rockBtn.addEventListener("click", function () {
+  playGame(getRandomRockPaperScissors(), "rock");
+});
+paperBtn.addEventListener("click", function () {
+  playGame(getRandomRockPaperScissors(), "paper");
+});
+scissorBtn.addEventListener("click", function () {
+  playGame(getRandomRockPaperScissors(), "scissors");
+});
 
-//setup the game
-function playGame(choice) {
-  $('#pick').hide();
-  $('#game').show();
-  player = choice;
-   
-  $('.fight').show();
-  $('.playAgain').hide();
-  $('#computer').html(getBackLizardHands('', 'Computer'));
-  $('#player').html(getBackLizardHands('reverse', 'Player'));
+function getRandomRockPaperScissors() {
+  let arr = ["rock", "paper", "scissors"];
+  return arr[Math.floor(Math.random() * 3)];
 }
 
-function playAgain() {
-  $('#pick').show();
-  $('#game').hide();
-  $('#win').text('');
-}
+const winCombos = { rock: "paper", paper: "scissors", scissors: "rock" };
 
-function getComputer() {
-  let min = 0;
-  let max = 2;
-  let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-  switch (randomNumber) {
-    case 0:
-        computer = "rock";
-        break;
-    case 1:
-        computer = "paper";
-        break;
-    case 2:
-        computer = "scissors";
-  }
-  return buildIcon(computer, 'Computer');
-}
-
-function buildIcon(icon, player) {
-  completeIcon = "<h3 class='player'>" + player + "</h3>" +
-    "<i class='fa fa-hand-" +
-    icon + "-o' aria-hidden='true'></i>";
-  completeIcon += "<h3>" + icon + "</h3>" 
-  return completeIcon;
-}
-
-function getBackLizardHands(reverse,player) {
-  var lizardHand = "<h3 class='player'>" + player + "</h3>" +
-      "<i class='fa fa-hand-lizard-o " + reverse +
-      "' aria-hidden='true'></i>";
-  console.log(lizardHand);
-  return lizardHand;
-}
-
-function checkWin() {
-  if (player == computer) {
-    $('#win').text('Tie');
+function playGame(robotAnswer, playerAnswer) {
+  robotAnswerValue = robotAnswer;
+  playerAnswerValue = playerAnswer;
+  if (robotAnswer === playerAnswer) {
+    h1.textContent = "it was a tie";
+  } else if (winCombos[robotAnswer] === playerAnswer) {
+    displayPlayerWon();
   } else {
-    for (var i = 0; i < winCombinations.length; i++) {
-      if (winCombinations[i][0] == player) {
-        if (winCombinations[i][1] == computer) {
-          $('#win').text('Player Won');
-        } else {
-          $('#win').text('Computer Won');
-        }
-      }
-    }
-    
+    displayRobotWon();
   }
-  
+  displayAnswerTxt(robotAnswerValue,playerAnswerValue);
 }
 
-function fight() {
- 
-  playerIcon = buildIcon(player,'Player');
-  $('#player').html(playerIcon).css('textTransform', 'capitalize');
-  computerIcon = getComputer();
-  $('#computer').html(computerIcon).css('textTransform', 'capitalize');
-  $('.fight').hide();
-  $('.playAgain').show();
-  checkWin();
-  
+// display who won, their answer & score
+let robotScore = 0;
+let playerScore = 0;
+const playerWinnerDisplay = document.querySelector(".playerScore"),
+  playerAnswerDisplay = document.querySelector(".playerTxt"),
+  robotWinnerDisplay = document.querySelector(".robotScore"),
+  robotAnswerDisplay = document.querySelector(".robotTxt");
+
+function displayAnswerTxt() {
+  robotAnswerDisplay.textContent = `ROBOT: ${robotAnswerValue} `;
+  playerAnswerDisplay.textContent = `YOU: ${playerAnswerValue} `;
+}
+
+function displayPlayerWon() {
+  playerScore++;
+  h1.textContent = "you won!";
+  h1.classList.add("playerTextColor");
+  playerWinnerDisplay.textContent = `[ ${playerScore} ]`;
+}
+
+function displayRobotWon() {
+  robotScore++;
+  h1.textContent = "the robot won!";
+  h1.classList.add("robotTextColor");
+  robotWinnerDisplay.textContent = `[ ${robotScore} ]`;
 }
